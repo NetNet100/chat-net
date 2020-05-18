@@ -1,7 +1,6 @@
 import React from 'react';
 import Button from "@material-ui/core/Button";
 import firebase from '../../firebase/firebase';
-import swal from "sweetalert";
 
 const LogOut = () => {
 
@@ -19,14 +18,14 @@ const LogOut = () => {
     };
 
     return(
-        <>
+        <div>
             <Button
                 variant="contained"
-                color="secondary"
+                color="inherit"
                 onClick={logoutFunc} >
                 LogOut
             </Button>
-        </>
+        </div>
     );
 
 };

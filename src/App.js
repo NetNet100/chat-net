@@ -1,21 +1,27 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {CHANGE_NAME, LOG_OUT} from './redux/user/actions';
+import {CHANGE_NAME} from './redux/user/actions';
 import LogOut from './components/auth/logout';
+import './App.css';
+import ChatRoomsSideBar from './components/chatRoom/chatRoomsList';
+import NewChatModal from './components/chatRoom/newChatRoomModal'
+import ChatRoom from "./components/chatRoom/chatRoom";
+import Avatar from "@material-ui/core/Avatar";
 
 const App = ({user, changeName}) => {
 
   return (
         <div>
-            <LogOut />
-            <p>{user?user.name: "error" }</p>
-
-            <button onClick={()=> {changeName("Neta")}}>
-                Click me
-            </button>
-            <button onClick={()=> {changeName("Yovel")}}>
-            hh
-            </button>
+            <div className="sidenav">
+                <h2>Welcome To Chat-Net</h2>
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" style={{marginLeft: "80px", padding: "15px"}} />
+                <NewChatModal/>
+                <ChatRoomsSideBar />
+                <LogOut />
+            </div>
+            <div className="App">
+                <ChatRoom/>
+            </div>
         </div>
   );
 };

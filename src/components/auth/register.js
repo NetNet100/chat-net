@@ -27,13 +27,13 @@ const Register = () => {
                     displayName: firstName + " " +lastName,
                     photoURL: `http://gravatar.com/avatar/${md5(createdUser.user.email)}`,
                 }).then(
-                    setUsersRef(usersRef.child(createdUser.user.uid).set({
+                    usersRef.child(createdUser.user.uid).set({
                         email: createdUser.user.email,
                         firstName: firstName,
                         lastName: lastName,
                         photoURL: `http://gravatar.com/avatar/${md5(createdUser.user.email)}`,
                         lastSignInTimestamp: Date.now()
-                    })));
+                    }));
 
             }).catch((error) => {
             // Handle Errors here.

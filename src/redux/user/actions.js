@@ -5,14 +5,6 @@ export const actionTypes = {
     CHANGE_NAME: "CHANGE_NAME"
 };
 
-
-export const LogIn = (username) => {
-    return {
-        type: actionTypes.LOG_IN,
-        payload: username
-    }
-};
-
 export const LOG_OUT = (user) => {
     return {
         type: actionTypes.LOG_IN,
