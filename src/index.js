@@ -30,12 +30,18 @@ const Root = ({history}) => {
     useEffect(() => {
         if(!loading){
             if(user){
-                dispatch(SET_USER({
-                    id: user.uid,
-                    name: user.displayName,
-                    avatar: user.photoURL,
-                }));
-                history.push('/');
+                firebase.database()
+                    .ref('users')
+                    .child(user.uid)
+                    .once("value")
+                    .then((snapshot) => {
+                        const dbUser = snapshot.val();
+                        dbUser.id = user.uid;
+                        dispatch(SET_USER(dbUser));
+                        history.push('/');
+                    }).catch((err)=> {
+                        //handle err
+                });
             } else {
                 history.push('/login');
             }

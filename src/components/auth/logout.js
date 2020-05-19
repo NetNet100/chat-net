@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from "@material-ui/core/Button";
 import firebase from '../../firebase/firebase';
 
 const LogOut = () => {
@@ -18,14 +17,14 @@ const LogOut = () => {
     };
 
     return(
-        <div>
-            <Button
+        <>
+            <button
                 variant="contained"
                 color="inherit"
                 onClick={logoutFunc} >
                 LogOut
-            </Button>
-        </div>
+            </button>
+        </>
     );
 
 };

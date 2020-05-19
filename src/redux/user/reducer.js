@@ -1,10 +1,7 @@
-import {actionTypes} from "./actions";
+import actionTypes from "./actionType";
 
 export const userReducer = (state = {}, action) => {
     switch (action.type) {
-        case actionTypes.LOG_IN :
-            return {...action.payload};
-
         case actionTypes.LOG_OUT :
             return {...action.payload};
 

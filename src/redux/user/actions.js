@@ -1,13 +1,8 @@
-export const actionTypes = {
-    LOG_IN: "LOG_IN",
-    LOG_OUT: "LOG_OUT",
-    SET_USER: "SET_USER",
-    CHANGE_NAME: "CHANGE_NAME"
-};
+import actionTypes from './actionType';
 
 export const LOG_OUT = (user) => {
     return {
-        type: actionTypes.LOG_IN,
+        type: actionTypes.LOG_OUT,
         payload: user
     }
 };
@@ -15,6 +10,13 @@ export const LOG_OUT = (user) => {
 export const SET_USER = (user) => {
     return {
         type: actionTypes.SET_USER,
+        payload: user
+    }
+};
+
+export const UPDATE_USER = (user) => {
+    return {
+        type: actionTypes.UPDATE_USER,
         payload: user
     }
 };

@@ -18,11 +18,13 @@ const SendMessages = ({roomId, user}) => {
                 id,
                 roomId,
                 message,
-                user
+                userId: user.id,
+                time: new Date(),
+                timeToShow: new Date().getHours() + ":" +new Date().getMinutes(),
             };
 
             try {
-                mesaggesRef.child(id).update(newMessage).then(() => {
+                mesaggesRef.child(roomId).child(id).update(newMessage).then(() => {
                     setMessage("");
                 });
             } catch (error) {
