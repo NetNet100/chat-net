@@ -16,7 +16,7 @@ const Profile = ({user, setUser}) => {
     };
     const handleClose = (url) => {
         setOpen(false);
-        if(url) {
+        if(url != '' && typeof url != 'object') {
             user.photoURL = url;
             userRef.child(user.id).child('photoURL').set(url).then((r) =>{
                 setUser(user);

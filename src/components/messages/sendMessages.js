@@ -6,10 +6,12 @@ import IconButton from "@material-ui/core/IconButton";
 import {PhotoCamera} from "@material-ui/icons";
 import firebase from "../../firebase/firebase";
 import swal from "sweetalert";
+import ImageUpload from "../modals/uploadImage";
 
 const SendMessages = ({roomId, user}) => {
     const [message, setMessage] = useState("");
     const mesaggesRef = firebase.database().ref('messages');
+    const [open, setOpen] = useState(false);
 
     const handleMessage = () => {
         if(message && message.length > 1 ) {
@@ -35,6 +37,12 @@ const SendMessages = ({roomId, user}) => {
         }
     };
 
+    const handleClose = (url) => {
+        setOpen(false);
+        debugger;
+        setMessage(<img src={url}></img>);
+    };
+
     return (<>
         <TextField
         id="outlined-full-width"
@@ -44,6 +52,7 @@ const SendMessages = ({roomId, user}) => {
         fullWidth
         onChange={(e) => {setMessage(e.target.value)}}
         margin="normal"
+        value={message}
         InputLabelProps={{
             shrink: true,
         }}
@@ -57,14 +66,14 @@ const SendMessages = ({roomId, user}) => {
             Send
         </Button>
 
-        <label htmlFor="icon-button-file">
+        <label htmlFor="icon-button-file" onClick={() => {setOpen(true)}}>
             <IconButton color="primary" aria-label="upload picture" component="span">
                 <PhotoCamera />
             </IconButton>
         </label>
+        <ImageUpload isOpen={open} handleClose={handleClose}/>
     </>);
 };
-
 
 const mapStateToProps = (state) => {
     return {
@@ -73,10 +82,4 @@ const mapStateToProps = (state) => {
     }
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-
-    }
-};
-
-export default connect(mapStateToProps,mapDispatchToProps)(SendMessages);
+export default connect(mapStateToProps)(SendMessages);

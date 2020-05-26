@@ -53,10 +53,10 @@ const ChatRooms = () => {
             </div>
             <div style={{height:'100%', overflow:'auto'}}>
             <List>
-                {chatRoomList.map((chat) => {
+                {chatRoomList.map((chat, index) => {
                     return (
                         <ListItem
-                            key={chat.id}
+                            key={index}
                             button onClick={(e) => {handleChatRoomClick(chat)}}
                         >
                         <ListItemAvatar>

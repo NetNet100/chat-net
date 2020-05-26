@@ -15,15 +15,17 @@ const Messages = ({room}) => {
     const roomRef = firebase.database().ref('chatRooms');
     const [messagesList, loading] = useListVals(messagesRef);
     const [members, setMembers] = useState({});
-    const messageRef = useRef();
+    const messageRef = useRef(null);
 
     useEffect(() => {
         getMemberDatas();
     }, [room]);
 
     useEffect(() => {
-        messageRef.current.focus();
-        debugger;
+        console.log(messageRef);
+        messageRef.current.scrollIntoView({
+            behavior: 'smooth',
+        });
     }, [messagesList]);
 
     const getMemberDatas = () => {
@@ -48,13 +50,12 @@ const Messages = ({room}) => {
 
     return (
         <>
-            <List ref={messageRef}
-                    style={{overflow: 'auto', maxHeight:'680px'}}>
+            <List style={{overflow: 'auto', maxHeight:'350px'}}>
                 {messagesList.map((message, index) => {
                     return (
                         <div style={{display: 'flex'}}>
                             <h5 style={{marginRight: '15px'}}>{message.timeToShow}</h5>
-                            <div style={{borderLeft: '6px solid lightgreen', height: '47px', marginTop: '12px'}}></div>
+                            <div style={{borderLeft: '6px solid lightgreen', height: '47px', marginTop: '12px'}}/>
                             <ListItem key={index} id={message.id}>
                                 <ListItemAvatar>
                                     <Avatar src={members[message.userId] && members[message.userId].photoURL}/>
@@ -67,8 +68,8 @@ const Messages = ({room}) => {
                         </div>
                     )
                 })}
+                <div ref={messageRef}/>
             </List>
-            <button onClick={() => {console.log(messageRef)}}>click ref</button>
         </>
     );
 };

@@ -1,10 +1,10 @@
 .wrapper{
     display: grid;
-    grid-template-rows: 1fr 4fr 2fr;
+    grid-template-rows: 20% 55% 20%;
     grid-auto-columns: 80%;
-    grid-auto-row: 20%;
+    grid-auto-row: 10%;
     justify-items: stretch; /*put at the start of the element stretch is the default*/
-    grid-gap: 1em;
+    grid-gap: 2em;
     padding-right: 1%;
     padding-left: 21%;
     direction: ltr;
@@ -15,8 +15,10 @@
     border-radius: 10px;
     box-shadow: 1px 1px 6px #a5dc86;
     background-color: white;
-    max-height: 700px;
+    min-height: 70%;
+    max-height: 400px;
 }
+
 
 
 .group{

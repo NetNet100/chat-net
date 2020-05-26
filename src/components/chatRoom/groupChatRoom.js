@@ -26,13 +26,13 @@ const GroupChatRoom = ({room}) => {
     return(
         <div className='group'>
             <div>
-                <Avatar src={room.photoURL} style={{width: '120px', height: '120px', marginRight:'45px'}}/>
+                <Avatar src={room.photoURL} style={{width: '100px', height: '100px', marginRight:'45px'}}/>
             </div>
             <div>
                 <h3>{room.name}</h3>
                 <AvatarGroup max={4}>
-                    {members && members.map((member)=> {
-                        return <Avatar alt={member.firstName[0] + member.lastName[0] } src={member.photoURL}/>
+                    {members && members.map((member, index)=> {
+                        return <Avatar key={index} alt={member.firstName[0] + member.lastName[0] } src={member.photoURL}/>
                     })}
                 </AvatarGroup>
             </div>
